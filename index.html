@@ -8,16 +8,41 @@
 </head>
 <body>
   <main class="container">
-    <img src="eleyn xiong photo.jpg" class="avatar" alt="Eleyn Xiong" />
+    <header class="profile">
+      <img src="eleyn xiong photo.jpg" class="avatar" alt="Eleyn Xiong" />
+      <div class="profile-info">
+        <h1>Eleyn Xiong</h1>
+        <div class="links">
+          <a href="https://github.com/eleyn-xiong" target="_blank">GitHub</a>
+          <a href="https://www.linkedin.com/in/eleyn-xiong-662018217/" target="_blank">LinkedIn</a>
+          <a href="mailto:eleynxiong@gmail.com">Email</a>
+        </div>
+      </div>
+    </header>
 
 
     <section class="projects">
-      <h2>My Personal Projects</h2>
+      <div class="projects-header">
+        <h2>My Personal Projects</h2>
+        <label class="filter">
+          <span class="visually-hidden">Filter projects by category</span>
+          <select id="category-filter">
+            <option value="all">Full Display</option>
+            <option value="ai-agents">AI Agents</option>
+            <option value="cybersecurity">Cybersecurity</option>
+            <option value="enterprise">Enterprise &amp; B2B</option>
+            <option value="frontend">Frontend &amp; Dashboards</option>
+            <option value="ml">ML &amp; Predictions</option>
+            <option value="data">Data &amp; Analytics</option>
+            <option value="automation">Automation &amp; Growth</option>
+          </select>
+        </label>
+      </div>
 
       <div class="project-grid">
 
         <!-- SwarmShield -->
-        <div class="project-card">
+        <div class="project-card" data-categories="ai-agents cybersecurity enterprise">
           <div class="project-placeholder">SwarmShield</div>
           <span class="project-meta">SpeedHacks · Oct 2026</span>
           <h3>SwarmShield</h3>
@@ -29,7 +54,7 @@
         </div>
 
         <!-- Klynt -->
-        <div class="project-card">
+        <div class="project-card" data-categories="enterprise frontend automation">
           <div class="project-placeholder">Klynt</div>
           <span class="project-meta">Innovation Intelligence Hackathon · Oct 2026</span>
           <h3>Klynt</h3>
@@ -41,7 +66,7 @@
         </div>
 
         <!-- Treasury Prediction -->
-        <div class="project-card">
+        <div class="project-card" data-categories="ml data">
           <img src="projects/treasury-model.png" alt="Treasury Yield Probability Distribution">
           <span class="project-meta">Kalshi Games Buildathon · Jan 2026</span>
           <h3>Treasury Yield Prediction Model</h3>
@@ -54,7 +79,7 @@
         </div>
 
         <!-- PerJentic -->
-        <div class="project-card">
+        <div class="project-card" data-categories="ai-agents frontend">
           <div class="project-placeholder">PerJentic</div>
           <span class="project-meta">Perplexity Hackathon · May 2026</span>
           <h3>PerJentic</h3>
@@ -66,7 +91,7 @@
         </div>
 
         <!-- LinkedIn Outreach Engine -->
-        <div class="project-card">
+        <div class="project-card" data-categories="enterprise data automation">
           <img src="projects/outreach-engine.png" alt="Outreach Engine sent-mail preview">
           <span class="project-meta">Personal project · May 2026</span>
           <h3>LinkedIn Outreach Engine</h3>
@@ -78,7 +103,7 @@
         </div>
 
         <!-- IBSI LIVE Dashboard -->
-        <div class="project-card">
+        <div class="project-card" data-categories="enterprise frontend data">
           <img src="projects/ibsi-dashboard.png" alt="IBSI LIVE dashboard preview">
           <span class="project-meta">Haas School of Business IBSI · May 2026</span>
           <h3>IBSI LIVE Impact Dashboard</h3>
@@ -90,7 +115,7 @@
         </div>
 
         <!-- TikTok Search Engine -->
-        <div class="project-card">
+        <div class="project-card" data-categories="data">
           <img src="projects/tiktok-search.png" alt="TikTok Search Engine preview">
           <span class="project-meta">Personal project · Nov 2025</span>
           <h3>TikTok Search Engine</h3>
@@ -102,7 +127,7 @@
         </div>
 
         <!-- Voice Assistant (with video) -->
-        <div class="project-card">
+        <div class="project-card" data-categories="ai-agents">
           <video
             class="project-video"
             src="assets/videos/voice-assistant-demo.mp4"
@@ -123,11 +148,16 @@
       </div>
     </section>
 
-    <div class="links">
-      <a href="https://github.com/eleyn-xiong" target="_blank">GitHub</a>
-      <a href="https://www.linkedin.com/in/eleyn-xiong-662018217/" target="_blank">LinkedIn</a>
-      <a href="mailto:eleynxiong@gmail.com">Email</a>
-    </div>
   </main>
+
+  <script>
+    const filter = document.getElementById('category-filter');
+    filter.addEventListener('change', () => {
+      document.querySelectorAll('.project-card').forEach(card => {
+        const cats = card.dataset.categories.split(' ');
+        card.hidden = filter.value !== 'all' && !cats.includes(filter.value);
+      });
+    });
+  </script>
 </body>
 </html>

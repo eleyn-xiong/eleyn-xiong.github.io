@@ -250,3 +250,62 @@ h1 {
 .project-card .project-link:hover {
   text-decoration: underline;
 }
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.profile .avatar {
+  margin-bottom: 0;
+}
+
+.profile h1 {
+  margin: 0 0 0.75rem;
+  font-size: 2.5rem;
+}
+
+.projects-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.projects-header h2 {
+  margin: 0;
+}
+
+.filter select {
+  background: #0f172a;
+  color: #e5e7eb;
+  border: 1px solid #1e293b;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font: inherit;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.filter select:hover,
+.filter select:focus {
+  border-color: #38bdf8;
+  outline: none;
+}
+
+.project-card[hidden] {
+  display: none;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
