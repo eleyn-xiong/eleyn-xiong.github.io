@@ -21,7 +21,14 @@
     </header>
 
 
-    <section class="projects">
+    <div class="layout">
+      <nav class="side-tabs" role="tablist" aria-label="Project type">
+        <button class="side-tab" role="tab" id="tab-programming" aria-controls="panel-programming" aria-selected="true" data-hash="programming">Programming Projects</button>
+        <button class="side-tab" role="tab" id="tab-case-comps" aria-controls="panel-case-comps" aria-selected="false" data-hash="case-comps">Case Comp Projects</button>
+      </nav>
+
+      <div class="tab-panels">
+    <section class="projects" role="tabpanel" id="panel-programming" aria-labelledby="tab-programming">
       <div class="projects-header">
         <h2>My Personal Projects</h2>
         <label class="filter">
@@ -148,9 +155,32 @@
       </div>
     </section>
 
+    <section class="projects" role="tabpanel" id="panel-case-comps" aria-labelledby="tab-case-comps" hidden>
+      <div class="projects-header">
+        <h2>Case Comp Projects</h2>
+      </div>
+      <p class="empty-state">Case competition projects coming soon.</p>
+    </section>
+      </div>
+    </div>
+
   </main>
 
   <script>
+    const tabs = document.querySelectorAll('.side-tab');
+    function showTab(hash) {
+      tabs.forEach(tab => {
+        const active = tab.dataset.hash === hash;
+        tab.setAttribute('aria-selected', active);
+        document.getElementById(tab.getAttribute('aria-controls')).hidden = !active;
+      });
+    }
+    tabs.forEach(tab => tab.addEventListener('click', () => {
+      history.replaceState(null, '', '#' + tab.dataset.hash);
+      showTab(tab.dataset.hash);
+    }));
+    if (location.hash === '#case-comps') showTab('case-comps');
+
     const filter = document.getElementById('category-filter');
     filter.addEventListener('change', () => {
       document.querySelectorAll('.project-card').forEach(card => {

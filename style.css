@@ -309,3 +309,87 @@ h1 {
   clip: rect(0 0 0 0);
   white-space: nowrap;
 }
+
+.container {
+  max-width: 1000px;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 40px;
+  margin-top: 4rem;
+}
+
+.layout .projects {
+  margin-top: 0;
+}
+
+.side-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: sticky;
+  top: 24px;
+  align-self: start;
+}
+
+.side-tab {
+  background: none;
+  border: none;
+  border-left: 3px solid transparent;
+  color: #94a3b8;
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: left;
+  padding: 10px 14px;
+  border-radius: 0 8px 8px 0;
+  cursor: pointer;
+}
+
+.side-tab:hover {
+  color: #e5e7eb;
+  background: #0f172a;
+}
+
+.side-tab[aria-selected="true"] {
+  color: #e5e7eb;
+  background: #0f172a;
+  border-left-color: #38bdf8;
+}
+
+.projects[hidden] {
+  display: none;
+}
+
+.empty-state {
+  color: #94a3b8;
+  padding: 40px 20px;
+  text-align: center;
+  border: 1px dashed #1e293b;
+  border-radius: 12px;
+}
+
+@media (max-width: 720px) {
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .side-tabs {
+    flex-direction: row;
+    position: static;
+    border-bottom: 1px solid #1e293b;
+  }
+
+  .side-tab {
+    border-left: none;
+    border-bottom: 3px solid transparent;
+    border-radius: 8px 8px 0 0;
+  }
+
+  .side-tab[aria-selected="true"] {
+    border-bottom-color: #38bdf8;
+  }
+}
