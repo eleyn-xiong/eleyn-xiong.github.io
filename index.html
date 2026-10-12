@@ -159,7 +159,32 @@
       <div class="projects-header">
         <h2>Case Comp Projects</h2>
       </div>
-      <p class="empty-state">Case competition projects coming soon.</p>
+      <div class="project-grid">
+
+        <!-- Perplexity AI Case Comp -->
+        <div class="project-card">
+          <img src="projects/perplexity-case-comp.png" alt="Comet Work Hub onboarding mockup from the Perplexity case deck">
+          <span class="project-meta">Perplexity AI Case Comp · Nov 2025</span>
+          <h3>Perplexity Comet Go-To-Market Strategy</h3>
+          <p>
+            Go-to-market plan for Perplexity's Comet browser in education: segmented students and campus operations,
+            designed collaborative Work Hubs with referral-driven growth, and built a phased freemium monetization roadmap.
+          </p>
+          <a class="project-link" href="https://drive.google.com/file/d/15a8d-hhKLZ_BFy6NbS1FSYYTkY9v8iDo/view" target="_blank">View the deck →</a>
+        </div>
+
+        <!-- Five Star Bank Case Comp -->
+        <div class="project-card">
+          <img src="projects/five-star-case-comp.png" alt="Five Star Bank stars graphic">
+          <span class="project-meta">Five Star Bank Case Comp · Nov 2025</span>
+          <h3>Five Star Bank Telehealth Banking Strategy</h3>
+          <p>
+            Strategy to position Five Star Bank as California's go-to telehealth bank: market and competitive analysis,
+            client acquisition plans for TeleMed2U, HealthTap, and Meru Health, and a ~$1M/year revenue model.
+          </p>
+        </div>
+
+      </div>
     </section>
       </div>
     </div>
@@ -183,7 +208,7 @@
 
     const filter = document.getElementById('category-filter');
     filter.addEventListener('change', () => {
-      document.querySelectorAll('.project-card').forEach(card => {
+      document.querySelectorAll('#panel-programming .project-card').forEach(card => {
         const cats = card.dataset.categories.split(' ');
         card.hidden = filter.value !== 'all' && !cats.includes(filter.value);
       });
